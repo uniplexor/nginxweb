@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginxweb
-  namespace: production
+  namespace: prod
 spec:
   replicas: 1
   selector:
@@ -18,13 +18,13 @@ spec:
         tier : frontend
     spec:
       securityContext:
-        readOnlyRootFilesystem: true
+        #readOnlyRootFilesystem: true
         runAsNonRoot: true
         runAsUser: 10014
         # ServiceAccountToken are the keys to access the cluster, we prevent them from being obtained by an attack on the container shell.
-        automountServiceAccountToken: false
+        #automountServiceAccountToken: false
       containers:
-        - image: 1.21.6-alpine
+        - image: nginx:1.21-alpine
           imagePullPolicy: Always
           name: webservice
           envFrom:
