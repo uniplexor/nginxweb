@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginxweb-vars
+  namespace: prod
+  labels:
+    app: nginxweb
+    tier: web
+data:
+  NGINX_HOST: "nginxweb.com"
+  NGINX_PORT: "80"
